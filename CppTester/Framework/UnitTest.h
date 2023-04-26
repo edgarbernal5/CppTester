@@ -42,7 +42,10 @@ namespace CppTester
 			TestCaseCallback body;
 		};
 
-		static TestSuite& Get() { return g_testSuite; }
+		static TestSuite& Get() { 
+			static TestSuite g_testSuite;
+			return g_testSuite;
+		}
 
 		void Add(std::string name, TestCaseCallback testCaseBody)
 		{
@@ -51,13 +54,11 @@ namespace CppTester
 
 		friend class TestRunner;
 	private:
-		static TestSuite g_testSuite;
 
 		std::vector<TestCase> m_testCases;
 
 		const std::vector<TestCase>& GetTestCases() const { return m_testCases; }
 	};
-	TestSuite TestSuite::g_testSuite;
 
 	class TestRunner
 	{
