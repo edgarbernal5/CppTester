@@ -1,5 +1,10 @@
 # Binaries
-
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
 
 # Visual Studio files and folder
 .vs/
