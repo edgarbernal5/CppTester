@@ -1,0 +1,19 @@
+# Binaries
+
+
+# Visual Studio files and folder
+.vs/
+**.vcxproj.user
+**.nsight-gfxproj
+**.DotSettings
+**.user
+
+# Log files
+**.log
+
+# Dumps
+*.nvdbg
+*.nv-gpudmp
+*gpudmp.json
+
+# Exceptions
