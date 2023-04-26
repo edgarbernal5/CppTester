@@ -43,15 +43,45 @@ namespace CppTester
 		std::cout << "Running test cases..." << std::endl << std::endl;
 
 		for (auto& testCase : testSuite.GetTestCases()) {
-			std::cout << "- Test case:" << std::endl << testCase.name << std::endl;
+			std::cout << "- Test case: " << testCase.name << std::endl;
 			testCase.body();
 		}
 
 		std::cout << std::endl << "Test cases summary:" << std::endl;
 	}
 
-	void assert_equals(int expected, int result) {
+	template<typename First, typename Second>
+	void assert_equals(First expected, Second result) {
 		if (expected == result) {
+			std::cout << "PASS" << std::endl;
+			return;
+		}
+
+		std::cout << "Assert FAILS" << std::endl;
+	}
+
+	template<typename First, typename Second>
+	void assert_not_equals(First expected, Second result) {
+		if (expected != result) {
+			std::cout << "PASS" << std::endl;
+			return;
+		}
+
+		std::cout << "Assert FAILS" << std::endl;
+	}
+
+	void assert_true(bool condition) {
+		if (condition) {
+			std::cout << "PASS" << std::endl;
+			return;
+		}
+
+		std::cout << "Assert FAILS" << std::endl;
+	}
+
+	void assert_false(bool condition) {
+		if (!condition) {
+			std::cout << "PASS" << std::endl;
 			return;
 		}
 
