@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 	TestSuite& suite = TestSuite::Get();
 
 	suite.Add("Sum two integers", [] {
-		int expected = 3;
+		int expected = 4;
 		int a = 2, b = 1;
 
 		int result = a + b;
@@ -26,7 +26,8 @@ int main(int argc, char** argv)
 		assert_true(result);
 	});
 
-	TestRunner_RunAllTests(suite);
+	TestRunner testRunner;
+	testRunner.RunAllTests(suite);
 
 	return 0;
 }
