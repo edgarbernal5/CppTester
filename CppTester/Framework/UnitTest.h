@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+#include <unordered_map>
 
 namespace CppTester
 {
@@ -23,7 +24,6 @@ namespace CppTester
 		
 		char const* what() const override
 		{
-			
 			return m_message.c_str();
 		}
 
@@ -49,15 +49,15 @@ namespace CppTester
 
 		void Add(std::string name, TestCaseCallback testCaseBody)
 		{
-			m_testCases.push_back(TestCase{ name, testCaseBody });
+			m_testCases.insert({ name, TestCase{ name, testCaseBody } });
 		}
 
 		friend class TestRunner;
 	private:
 
-		std::vector<TestCase> m_testCases;
+		std::unordered_map<std::string, TestCase> m_testCases;
 
-		const std::vector<TestCase>& GetTestCases() const { return m_testCases; }
+		const std::unordered_map<std::string, TestCase>& GetTestCases() const { return m_testCases; }
 	};
 
 	class TestRunner
@@ -68,11 +68,11 @@ namespace CppTester
 
 			int testCasesFailures = 0;
 			auto testsCases = testSuite.GetTestCases();
-			for (auto& testCase : testsCases)
+			for (const auto& testCasePair : testsCases)
 			{
-				std::cout << "- Test case: " << testCase.name << std::endl;
+				std::cout << "- Test case: " << testCasePair.first << std::endl;
 				try {
-					testCase.body(); 
+					testCasePair.second.body();
 					std::cout << "PASS." << std::endl << std::endl;
 				}
 				catch (TestFailure failureException) {
