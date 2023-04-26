@@ -1,2 +1,2 @@
 # CppTester
-Light-weight unit test framework
+Light-weight unit testing framework.
