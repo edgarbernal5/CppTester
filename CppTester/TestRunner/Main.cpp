@@ -17,12 +17,12 @@ int main(int argc, char** argv)
 	suite.Add("Booleans not equals", [] {
 		bool expected = false;
 
-		int result = true;
+		bool result = true;
 		assert_not_equals(expected, result);
 	});
 
 	suite.Add("Assert true", [] {
-		int result = true;
+		bool result = true;
 		assert_true(result);
 	});
 

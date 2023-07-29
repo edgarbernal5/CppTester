@@ -75,7 +75,7 @@ namespace CppTester
 					testCasePair.second.body();
 					std::cout << "PASS." << std::endl << std::endl;
 				}
-				catch (TestFailure failureException) {
+				catch (TestFailure& failureException) {
 					std::cout << "FAILURE: " << failureException.what() << std::endl << std::endl;
 					++testCasesFailures;
 				}
@@ -88,7 +88,7 @@ namespace CppTester
 	};
 
 	template<typename First, typename Second>
-	void assert_equals(First expected, Second result) {
+	void assert_equals(First&& expected, Second&& result) {
 		if (expected == result) {
 			return;
 		}
@@ -98,7 +98,7 @@ namespace CppTester
 	}
 
 	template<typename First, typename Second>
-	void assert_not_equals(First expected, Second result) {
+	void assert_not_equals(First&& expected, Second&& result) {
 		if (expected != result) {
 			return;
 		}
